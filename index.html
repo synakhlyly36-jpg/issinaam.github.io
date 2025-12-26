@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>issinaam | Fake Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050509;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at top, #14141f 0, #050509 55%, #000 100%);
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 32px;
+      flex: 1;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ff3b3b 0, #101015 55%, #000 100%);
+      box-shadow: 0 0 18px rgba(255, 59, 59, 0.5);
+    }
+
+    .artist-name {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f9f9f9;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #ff3b3b, #ff7b7b);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-text p {
+      font-size: 0.95rem;
+      max-width: 460px;
+      color: #c0c0c0;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-art {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 220px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #050509;
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .hero-art-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 14px 16px;
+    }
+
+    .hero-art-overlay span {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .links-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(8, 8, 12, 0.9);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .link-pill:hover {
+      background: rgba(255, 59, 59, 0.12);
+      border-color: rgba(255, 59, 59, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .link-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ff3b3b;
+      box-shadow: 0 0 10px rgba(255, 59, 59, 0.7);
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
+    }
+
+    .tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .track-card {
+      border-radius: 14px;
+      background: rgba(10, 10, 16, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 12px 12px 10px;
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .track-cover {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #080810;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .track-main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .track-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .track-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .track-meta {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .quality-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .quality-btn {
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(5, 5, 10, 0.9);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .quality-btn.active {
+      background: rgba(255, 59, 59, 0.18);
+      border-color: rgba(255, 59, 59, 0.9);
+      color: #ffdede;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 4px;
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.9));
+    }
+
+    footer {
+      padding: 14px 16px 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.75rem;
+      color: rgba(200, 200, 200, 0.7);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-art {
+        order: -1;
+      }
+
+      .track-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .track-cover {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content">
+      <!-- HEADER -->
+      <header>
+        <div class="logo-group">
+          <div class="logo-mark"></div>
+          <div class="artist-name">ISSINAAM</div>
+        </div>
+        <nav>
+          <a href="#tracks">Tracks</a>
+          <a href="#links">Links</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Fake Love – Sina x AJ</h1>
+          <p>
+            فضای رسمی برای انتشار Fake Love از issinaam؛
+            بدون شلوغی، با تمرکز روی صدا و تصویر.
+          </p>
+          <div class="hero-tags">
+            <span class="tag">Dark</span>
+            <span class="tag">Minimal</span>
+            <span class="tag">Fake Love</span>
+            <span class="tag">Sina x AJ</span>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="covers/fake-love-cover.png" alt="Fake Love cover">
+          <div class="hero-art-overlay">
+            <span>Sina x AJ • Fake Love • Official Stream</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINKS -->
+      <section id="links" class="links-bar">
+        <a class="link-pill" href="https://on.soundcloud.com/zK8SYtN6FcwqFOkIv0" target="_blank" rel="noopener">
+          <span class="link-dot"></span>
+          <span>SoundCloud</span>
+        </a>
+        <a class="link-pill" href="https://youtube.com/@issinaam?si=5yolxeSADxE59ypV" target="_blank" rel="noopener">
+          <span class="link-dot"></span>
+          <span>YouTube</span>
+        </a>
+        <a class="link-pill" href="https://t.me/issinaam" target="_blank" rel="noopener">
+          <span class="link-dot"></span>
+          <span>Telegram</span>
+        </a>
+        <a class="link-pill" href="http://Instagram.com/issinaam" target="_blank" rel="noopener">
+          <span class="link-dot"></span>
+          <span>Instagram</span>
+        </a>
+      </section>
+
+      <!-- TRACKS -->
+      <section id="tracks">
+        <h3 class="section-title">Selected track</h3>
+
+        <div class="tracks">
+          <article class="track-card" data-track-id="fake-love">
+            <div class="track-cover">
+              <img src="covers/fake-love-cover.png" alt="Fake Love cover">
+            </div>
+            <div class="track-main">
+              <div class="track-header">
+                <div>
+                  <div class="track-title">Sina x AJ – Fake Love</div>
+                  <div class="track-meta">Single • 3:00</div>
+                </div>
+                <div class="track-meta">320 kbps</div>
+              </div>
+
+              <div class="quality-row">
+                <button class="quality-btn active" data-src="audio/fake-love-320.mp3">
+                  320 kbps
+                </button>
+              </div>
+
+              <audio controls preload="none">
+                <source src="audio/fake-love-320.mp3" type="audio/mpeg" />
+                مرورگر شما از پخش‌کننده صوتی پشتیبانی نمی‌کند.
+              </audio>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <span>© 2025 issinaam – All rights reserved.</span>
+      <span>Contact: issinaam (via Telegram / Instagram)</span>
+    </footer>
+  </div>
+
+  <!-- اگر بعداً چند کیفیت اضافه کنی این JS آماده‌ست -->
+  <script>
+    document.querySelectorAll(".track-card").forEach(function (card) {
+      var audio = card.querySelector("audio");
+      var qualityButtons = card.querySelectorAll(".quality-btn");
+
+      qualityButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          qualityButtons.forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+
+          var newSrc = btn.getAttribute("data-src");
+          if (newSrc) {
+            audio.pause();
+            var source = audio.querySelector("source");
+            source.setAttribute("src", newSrc);
+            audio.load();
+            audio.play().catch(function () {});
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
